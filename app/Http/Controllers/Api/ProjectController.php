@@ -8,17 +8,17 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-    public function index(){
-        $projects = Project::with('types', 'technologies')->get();
+    public function index() {
+        $projects = Project::with(['technologies', 'type'])->get();
         return response()->json([
-            'success' => true,
+            'succes' => true,
             'results' => $projects
         ]);
     }
     public function show(string $slug)
     {
 
-        $project = Project::where('slug', $slug)->with('types', 'technologies')->first();
+        $project = Project::where('slug', $slug)->with('technologies', 'types')->first();
 
 
         if ($project) {

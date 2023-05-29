@@ -97,6 +97,8 @@ class ProjectController extends Controller
         if (isset($data['image'])) {
             $project->image = Storage::put('uploads', $data['image']);
         }
+        $technologies = isset($data['technologies']) ? $data['technologies'] : [];
+        $project->technologies()->sync($technologies);
         $project->update($data);
         return to_route('admin.projects.index', compact('project'));
     }

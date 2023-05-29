@@ -50,6 +50,8 @@ class ProjectController extends Controller
             $new_project->image = Storage::put('uploads', $data['image']);
         }
         $new_project->description = $data['description'];
+        $new_project->creation_date = $data['creation_date'];
+        $new_project->type_id = $data['type_id'];
         $new_project->slug =  Str::slug($new_project->project_title, '-');
         $new_project->save();
         if(isset($data['technologies'])){

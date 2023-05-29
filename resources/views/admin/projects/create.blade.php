@@ -52,7 +52,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="creation_date" class="form-label">Creation date</label>
-                        <input type="date" class="form-control" id="creation_date"
+                        <input type="date" class="form-control" id="creation_date" @error('creation_date') is-invalid @enderror
                             name="creation_date">{{ old('creation_date') }}</textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>

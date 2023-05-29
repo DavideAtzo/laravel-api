@@ -26,7 +26,7 @@ class StoreProjectRequest extends FormRequest
         return [
             'project_title' => 'required|unique:projects|string',
             'description'=>'nullable',
-            'creation_date' => 'nullable|date',
+            'creation_date' => 'required|date',
             'image' => 'nullable|image',
             'type_id' => 'nullable|exists:types,id',
             'technologies' => 'nullable|exists:technologies,id'

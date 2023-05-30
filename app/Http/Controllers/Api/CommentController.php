@@ -13,7 +13,7 @@ class CommentController extends Controller
         $data = $request->validate([
             'author' => 'required|string',
             'content' => 'required|string',
-            'email' => 'required|string',
+            'email' => 'required|email',
             'project_id' => 'integer|exists:projects,id'
         ]);
         $comment = new Comment();

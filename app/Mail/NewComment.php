@@ -13,14 +13,16 @@ class NewComment extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $comment;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($_comment)
     {
-        //
+        $this->comment = $_comment;
     }
 
     /**
@@ -32,6 +34,7 @@ class NewComment extends Mailable
     {
         return new Envelope(
             subject: 'New Comment',
+            replyTo: 'info@boolpress.it',
         );
     }
 
@@ -43,7 +46,7 @@ class NewComment extends Mailable
     public function content()
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.newComment',
         );
     }
 

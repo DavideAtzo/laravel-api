@@ -13,11 +13,13 @@ class CommentController extends Controller
         $data = $request->validate([
             'author' => 'required|string',
             'content' => 'required|string',
+            'email' => 'required|string',
             'project_id' => 'integer|exists:projects,id'
         ]);
         $comment = new Comment();
         $comment->author = $data['author'];
         $comment->content = $data['content'];
+        $comment->email = $data['email'];
         $comment->project_id = $data['project_id'];
         $comment->save();
         return $comment;

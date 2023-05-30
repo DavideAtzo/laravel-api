@@ -23,6 +23,7 @@ class CommentSeeder extends Seeder
             $comment = new Comment();
             $comment->author = fake()->name;
             $comment->content = fake()->text();
+            $comment->email = fake()->email();
             $comment->project_id = $project->id;
             $comment->save();
 

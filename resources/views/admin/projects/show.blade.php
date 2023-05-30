@@ -26,6 +26,11 @@
                             <div>
                                 <h4>{{ $comment->author }}</h4>
                                 <p>{{ $comment->content }}</p>
+                                <form action="{{ route('admin.comments.destroy', $comment) }}" method="POST">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button class="btn btn-danger btn-sm">Delete</button>
+                               </form>
                             </div>
                         @endforeach
                     </div>

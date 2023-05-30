@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TypeController;
@@ -24,6 +25,7 @@ Route::get('/', function () {
 Route::middleware('auth', 'verified')->name('admin.')->prefix('admin')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('projects', ProjectController::class);
+        Route::delete('comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
     });
 
 

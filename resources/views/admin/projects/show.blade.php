@@ -16,10 +16,19 @@
                     @if ($project->type_id)
                         <h2>Type: {{ $project->type->name }}</h2>
                     @endif
-                    <div>Technologies: 
-                        {{ $project->technologies->implode('name', ', ') ?: 'No technologies in this project'}}
+                    <div>Technologies:
+                        {{ $project->technologies->implode('name', ', ') ?: 'No technologies in this project' }}
                     </div>
                     <p>{{ $project->creation_date }}</p>
+                    <div class="comments">
+                        <h3>Comments:</h3>
+                        @foreach ($project->comments as $comment)
+                            <div>
+                                <h4>{{ $comment->author }}</h4>
+                                <p>{{ $comment->content }}</p>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
